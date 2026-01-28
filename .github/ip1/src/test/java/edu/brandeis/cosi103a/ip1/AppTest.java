@@ -27,7 +27,7 @@ public class AppTest
     public void testRollDieReturnsValueBetween1And6() {
         Random random = new Random(42); // Fixed seed for consistent testing
         for (int i = 0; i < 100; i++) {
-            int result = App.rollDie(random);
+            int result = ATG.rollDie(random);
             assertTrue("Roll should be between 1 and 6", result >= 1 && result <= 6);
         }
     }
@@ -38,7 +38,7 @@ public class AppTest
         Scanner scanner = new Scanner(new ByteArrayInputStream(input.getBytes()));
         Random random = new Random(42);
         int currentValue = 3;
-        int result = App.handleReRolls(scanner, random, currentValue);
+        int result = ATG.handleReRolls(scanner, random, currentValue);
         assertEquals("Should return original value when no re-roll", 3, result);
     }
 
@@ -48,7 +48,7 @@ public class AppTest
         Scanner scanner = new Scanner(new ByteArrayInputStream(input.getBytes()));
         Random random = new Random(42);
         int currentValue = 1;
-        int result = App.handleReRolls(scanner, random, currentValue);
+        int result = ATG.handleReRolls(scanner, random, currentValue);
         assertTrue("Result should be between 1 and 6 after re-roll", result >= 1 && result <= 6);
         // Since it re-rolled once, result should be the new roll value
     }
@@ -59,7 +59,7 @@ public class AppTest
         Scanner scanner = new Scanner(new ByteArrayInputStream(input.getBytes()));
         Random random = new Random(42);
         int currentValue = 1;
-        int result = App.handleReRolls(scanner, random, currentValue);
+        int result = ATG.handleReRolls(scanner, random, currentValue);
         assertTrue("Result should be between 1 and 6 after two re-rolls", result >= 1 && result <= 6);
     }
 
@@ -69,7 +69,7 @@ public class AppTest
         Scanner scanner = new Scanner(new ByteArrayInputStream(input.getBytes()));
         Random random = new Random(42);
         int currentValue = 2;
-        int result = App.handleReRolls(scanner, random, currentValue);
+        int result = ATG.handleReRolls(scanner, random, currentValue);
         assertEquals("Should return original value after invalid input and no re-roll", 2, result);
     }
 }
